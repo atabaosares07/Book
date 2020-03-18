@@ -18,6 +18,8 @@ namespace Book.Data.Entities
 		public string Isbn { get; set; }
 		public int CategoryId { get; set; }
 		public virtual Category Category { get; set; }
+		public int PublisherId { get; set; }
+		public virtual Publisher Publisher { get; set; }
 		public virtual ICollection<BookAuthor> BookAuthors { get; set; }
 
 		public Book()

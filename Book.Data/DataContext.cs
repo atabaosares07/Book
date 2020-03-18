@@ -1,18 +1,15 @@
 ﻿using Book.Data.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Book.Data
 {
     public class DataContext : DbContext
     {
-
         public DbSet<Category> Categories { get; set; }
         public DbSet<Book.Data.Entities.Book> Books { get; set; }
         public DbSet<Author> Authors { get; set; }
+        public DbSet<Publisher> Publishers { get; set; }
 
         public DataContext(DbContextOptions<DataContext> options) : base(options) {}
 

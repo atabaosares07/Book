@@ -16,6 +16,7 @@ namespace Book.AutoMapper
             CreateMap<Author, AuthorDto>();
             CreateMap<Book.Data.Entities.Book, BookDto>();
             CreateMap<BookAuthor, BookAuthorDto>();
+            CreateMap<Publisher, PublisherDto>();
 
             // entity -> query dto
             CreateMap<Category, CategoryQueryDto>();
@@ -24,12 +25,14 @@ namespace Book.AutoMapper
                 .ForMember(dest => dest.Details, o => o.MapFrom(src => string.Format("bookName: {0}, isbn: {1}", src.BookName, src.Isbn)))
                 .ForMember(dest => dest.Message, o => o.MapFrom(src => string.Format("Hello world! Book ID is {0}", src.BookId)))
                 ;
+            CreateMap<Publisher, PublisherQueryDto>();
 
             // dto -> entity
             CreateMap<CategoryDto, Category>();
             CreateMap<AuthorDto, Author>();
             CreateMap<BookDto, Book.Data.Entities.Book>();
             CreateMap<BookAuthorDto, BookAuthor>();
+            CreateMap<PublisherDto, Publisher>();
 
         }
     }

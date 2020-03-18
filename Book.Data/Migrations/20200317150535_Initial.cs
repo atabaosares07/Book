@@ -2,7 +2,7 @@
 
 namespace Book.Data.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -34,6 +34,19 @@ namespace Book.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Publisher",
+                columns: table => new
+                {
+                    PublisherId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    PublisherName = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Publisher", x => x.PublisherId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Book",
                 columns: table => new
                 {
@@ -42,7 +55,8 @@ namespace Book.Data.Migrations
                     BookName = table.Column<string>(nullable: false),
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Isbn = table.Column<string>(nullable: false),
-                    CategoryId = table.Column<int>(nullable: false)
+                    CategoryId = table.Column<int>(nullable: false),
+                    PublisherId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -52,6 +66,12 @@ namespace Book.Data.Migrations
                         column: x => x.CategoryId,
                         principalTable: "Category",
                         principalColumn: "CategoryId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Book_Publisher_PublisherId",
+                        column: x => x.PublisherId,
+                        principalTable: "Publisher",
+                        principalColumn: "PublisherId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -85,6 +105,11 @@ namespace Book.Data.Migrations
                 column: "CategoryId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Book_PublisherId",
+                table: "Book",
+                column: "PublisherId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_BookAuthor_AuthorId",
                 table: "BookAuthor",
                 column: "AuthorId");
@@ -103,6 +128,9 @@ namespace Book.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "Category");
+
+            migrationBuilder.DropTable(
+                name: "Publisher");
         }
     }
 }

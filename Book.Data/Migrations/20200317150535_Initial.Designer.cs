@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Book.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20200224162759_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20200317150535_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -61,9 +61,14 @@ namespace Book.Data.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<int>("PublisherId")
+                        .HasColumnType("int");
+
                     b.HasKey("BookId");
 
                     b.HasIndex("CategoryId");
+
+                    b.HasIndex("PublisherId");
 
                     b.ToTable("Book");
                 });
@@ -99,11 +104,33 @@ namespace Book.Data.Migrations
                     b.ToTable("Category");
                 });
 
+            modelBuilder.Entity("Book.Data.Entities.Publisher", b =>
+                {
+                    b.Property<int>("PublisherId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("PublisherName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("PublisherId");
+
+                    b.ToTable("Publisher");
+                });
+
             modelBuilder.Entity("Book.Data.Entities.Book", b =>
                 {
                     b.HasOne("Book.Data.Entities.Category", "Category")
                         .WithMany("Books")
                         .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Book.Data.Entities.Publisher", "Publisher")
+                        .WithMany("Books")
+                        .HasForeignKey("PublisherId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
