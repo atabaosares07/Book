@@ -23,7 +23,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Book.AutoMapper", "Book.Aut
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Book.Dto", "Book.Dto\Book.Dto.csproj", "{5584E90A-D6F7-4BC5-9379-FA13D37F5223}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Book.UnitTests", "Book.UnitTests\Book.UnitTests.csproj", "{3704A78A-D42A-4196-8A1B-7141340A44B5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Book.UnitTests", "Book.UnitTests\Book.UnitTests.csproj", "{3704A78A-D42A-4196-8A1B-7141340A44B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Book.Logger", "Book.Logger\Book.Logger.csproj", "{40E67284-F900-4AD8-9B25-88F75BF180DF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,6 +57,10 @@ Global
 		{3704A78A-D42A-4196-8A1B-7141340A44B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3704A78A-D42A-4196-8A1B-7141340A44B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3704A78A-D42A-4196-8A1B-7141340A44B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40E67284-F900-4AD8-9B25-88F75BF180DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40E67284-F900-4AD8-9B25-88F75BF180DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40E67284-F900-4AD8-9B25-88F75BF180DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40E67284-F900-4AD8-9B25-88F75BF180DF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -66,6 +72,7 @@ Global
 		{2E37F9A4-0E15-4F75-9949-72FE05ECE582} = {4B646A57-97C7-4889-A5A0-A434B96CA7C0}
 		{5584E90A-D6F7-4BC5-9379-FA13D37F5223} = {4B646A57-97C7-4889-A5A0-A434B96CA7C0}
 		{3704A78A-D42A-4196-8A1B-7141340A44B5} = {4B0F0A58-FDC5-4FEA-9A4E-B4BDAF742D02}
+		{40E67284-F900-4AD8-9B25-88F75BF180DF} = {4B646A57-97C7-4889-A5A0-A434B96CA7C0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3D1969DE-8BA1-41A7-9988-7966ADB2FF94}
