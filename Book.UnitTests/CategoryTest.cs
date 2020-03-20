@@ -1,9 +1,11 @@
 using Book.Data;
 using Book.Dto;
+using Book.Logger;
 using Book.Services;
 using Book.Services.Rules;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 using System;
 using System.Threading.Tasks;
 
@@ -34,15 +36,23 @@ namespace Book.UnitTests
         [ExpectedException(typeof(NotFoundException))]
         public async Task GetById_NotFound()
         {
-            var service = new CategoryService(dataContext);
-            await service.GetById(99999);
+            var param = DateTime.Now.ToString();
+            var mock = new Mock<ILogger>();
+            mock.Setup(o => o.Log(param)).Returns(new CategoryDto { CategoryName = "test"}.CategoryName);
+
+            var service = new CategoryService(dataContext, mock.Object);
+            await service.GetById(999999);
         }
 
         [TestMethod]
         [ExpectedException(typeof(NotFoundException))]
         public async Task Update_NotFound()
         {
-            var service = new CategoryService(dataContext);
+            var param = DateTime.Now.ToString();
+            var mock = new Mock<ILogger>();
+            mock.Setup(o => o.Log(param)).Returns(new CategoryDto { CategoryName = "test" }.CategoryName);
+
+            var service = new CategoryService(dataContext, mock.Object);
             await service.Update(787, new CategoryDto());
         }
 
@@ -50,7 +60,11 @@ namespace Book.UnitTests
         [ExpectedException(typeof(NotFoundException))]
         public async Task Delete_NotFound()
         {
-            var service = new CategoryService(dataContext);
+            var param = DateTime.Now.ToString();
+            var mock = new Mock<ILogger>();
+            mock.Setup(o => o.Log(param)).Returns(new CategoryDto { CategoryName = "test" }.CategoryName);
+
+            var service = new CategoryService(dataContext, mock.Object);
             await service.Delete(888);
         }
     }

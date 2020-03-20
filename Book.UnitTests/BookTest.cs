@@ -1,9 +1,11 @@
 ﻿using Book.Data;
 using Book.Dto;
+using Book.Logger;
 using Book.Services;
 using Book.Services.Rules;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 using System;
 using System.Threading.Tasks;
 
@@ -34,7 +36,11 @@ namespace Book.UnitTests
         [ExpectedException(typeof(NotFoundException))]
         public async Task GetById_NotFound()
         {
-            var service = new BookService(dataContext);
+            var param = DateTime.Now.ToString();
+            var mock = new Mock<ILogger>();
+            mock.Setup(o => o.Log(param)).Returns(new BookDto { BookName = "The Little Prince" }.BookName);
+
+            var service = new BookService(dataContext, mock.Object);
             await service.GetById(81);
         }
 
@@ -42,7 +48,11 @@ namespace Book.UnitTests
         [ExpectedException(typeof(NotFoundException))]
         public async Task Update_NotFound()
         {
-            var service = new BookService(dataContext);
+            var param = DateTime.Now.ToString();
+            var mock = new Mock<ILogger>();
+            mock.Setup(o => o.Log(param)).Returns(new BookDto { BookName = "The Little Prince" }.BookName);
+
+            var service = new BookService(dataContext, mock.Object);
             await service.Update(3344, new BookDto());
         }
 
@@ -50,7 +60,11 @@ namespace Book.UnitTests
         [ExpectedException(typeof(NotFoundException))]
         public async Task Delete_NotFound()
         {
-            var service = new BookService(dataContext);
+            var param = DateTime.Now.ToString();
+            var mock = new Mock<ILogger>();
+            mock.Setup(o => o.Log(param)).Returns(new BookDto { BookName = "The Little Prince" }.BookName);
+
+            var service = new BookService(dataContext, mock.Object);
             await service.Delete(777);
         }
     }

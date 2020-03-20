@@ -1,9 +1,11 @@
 ﻿using Book.Data;
 using Book.Dto;
+using Book.Logger;
 using Book.Services;
 using Book.Services.Rules;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 using System;
 using System.Threading.Tasks;
 
@@ -34,7 +36,11 @@ namespace Book.UnitTests
         [ExpectedException(typeof(NotFoundException))]
         public async Task GetById_NotFound()
         {
-            var service = new AuthorService(dataContext);
+            var param = DateTime.Now.ToString();
+            var mock = new Mock<ILogger>();
+            mock.Setup(o => o.Log(param)).Returns(new AuthorDto { FirstName = "Stephen", LastName = "King" }.FirstName);
+
+            var service = new AuthorService(dataContext, mock.Object);
             await service.GetById(812);
         }
 
@@ -42,7 +48,11 @@ namespace Book.UnitTests
         [ExpectedException(typeof(NotFoundException))]
         public async Task Update_NotFound()
         {
-            var service = new AuthorService(dataContext);
+            var param = DateTime.Now.ToString();
+            var mock = new Mock<ILogger>();
+            mock.Setup(o => o.Log(param)).Returns(new AuthorDto { FirstName = "Stephen", LastName = "King" }.FirstName);
+
+            var service = new AuthorService(dataContext, mock.Object);
             await service.Update(333, new AuthorDto());
         }
 
@@ -50,7 +60,11 @@ namespace Book.UnitTests
         [ExpectedException(typeof(NotFoundException))]
         public async Task Delete_NotFound()
         {
-            var service = new AuthorService(dataContext);
+            var param = DateTime.Now.ToString();
+            var mock = new Mock<ILogger>();
+            mock.Setup(o => o.Log(param)).Returns(new AuthorDto { FirstName = "Stephen", LastName = "King" }.FirstName);
+
+            var service = new AuthorService(dataContext, mock.Object);
             await service.Delete(214);
         }
     }
