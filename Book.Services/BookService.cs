@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Book.Data;
 using Book.Dto;
+using Book.Logger;
 using Book.Services.Base;
 using Book.Services.Rules;
 using Microsoft.EntityFrameworkCore;
@@ -12,10 +13,12 @@ namespace Book.Services
     public class BookService: IBookService
     {
         private DataContext context;
+        private readonly ILogger logger;
 
-        public BookService(DataContext context)
+        public BookService(DataContext context, ILogger logger)
         {
             this.context = context;
+            this.logger = logger;
         }
 
         public async Task<object> Create(BookDto dto)

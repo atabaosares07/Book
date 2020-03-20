@@ -2,6 +2,7 @@
 using Book.Data;
 using Book.Data.Entities;
 using Book.Dto;
+using Book.Logger;
 using Book.Services.Base;
 using Book.Services.Rules;
 using Microsoft.EntityFrameworkCore;
@@ -13,10 +14,12 @@ namespace Book.Services
 	public class CategoryService : ICategoryService
     {
 		private DataContext context;
+		private readonly ILogger logger;
 
-		public CategoryService(DataContext context)
+		public CategoryService(DataContext context, ILogger logger)
 		{
 			this.context = context;
+			this.logger = logger;
 		}
 
 		public async Task<object> Create(CategoryDto dto)

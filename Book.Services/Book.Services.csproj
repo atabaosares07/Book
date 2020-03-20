@@ -11,6 +11,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Book.Data\Book.Data.csproj" />
     <ProjectReference Include="..\Book.Dto\Book.Dto.csproj" />
+    <ProjectReference Include="..\Book.Logger\Book.Logger.csproj" />
   </ItemGroup>
 
 </Project>

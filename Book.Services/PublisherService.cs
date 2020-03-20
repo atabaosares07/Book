@@ -2,6 +2,7 @@
 using Book.Data;
 using Book.Data.Entities;
 using Book.Dto;
+using Book.Logger;
 using Book.Services.Base;
 using Book.Services.Rules;
 using Microsoft.EntityFrameworkCore;
@@ -15,10 +16,12 @@ namespace Book.Services
     public class PublisherService : IPublisherService
     {
         private readonly DataContext context;
+        private readonly ILogger logger;
 
-        public PublisherService(DataContext context)
+        public PublisherService(DataContext context, ILogger logger)
         {
             this.context = context;
+            this.logger = logger;
         }
 
         public async Task<object> Create(PublisherDto dto)
