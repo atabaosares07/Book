@@ -57,7 +57,8 @@ namespace Book.Services
             var entity = await context.Publishers.FindAsync(id);
             if (entity == null)
                 throw new NotFoundException();
-            context.Update(Mapper.Map<PublisherDto>(entity));
+            context.Update(Mapper.Map(dto, entity));
+            await context.SaveChangesAsync();
         }
     }
 }
