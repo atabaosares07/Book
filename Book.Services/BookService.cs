@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Book.Data;
 using Book.Dto;
-using Book.Logger;
+using Book.LoggerProvider;
 using Book.Services.Base;
 using Book.Services.Rules;
 using Microsoft.EntityFrameworkCore;

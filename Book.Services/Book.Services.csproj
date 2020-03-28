@@ -12,6 +12,7 @@
     <ProjectReference Include="..\Book.Data\Book.Data.csproj" />
     <ProjectReference Include="..\Book.Dto\Book.Dto.csproj" />
     <ProjectReference Include="..\Book.Logger\Book.Logger.csproj" />
+    <ProjectReference Include="..\Book.Logger\Book.LoggerProvider.csproj" />
   </ItemGroup>
 
 </Project>

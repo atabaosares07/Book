@@ -25,7 +25,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Book.Dto", "Book.Dto\Book.D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Book.UnitTests", "Book.UnitTests\Book.UnitTests.csproj", "{3704A78A-D42A-4196-8A1B-7141340A44B5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Book.Logger", "Book.Logger\Book.Logger.csproj", "{40E67284-F900-4AD8-9B25-88F75BF180DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Book.LoggerProvider", "Book.Logger\Book.LoggerProvider.csproj", "{40E67284-F900-4AD8-9B25-88F75BF180DF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

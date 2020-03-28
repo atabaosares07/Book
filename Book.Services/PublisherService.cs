@@ -2,13 +2,11 @@
 using Book.Data;
 using Book.Data.Entities;
 using Book.Dto;
-using Book.Logger;
+using Book.LoggerProvider;
 using Book.Services.Base;
 using Book.Services.Rules;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Book.Services

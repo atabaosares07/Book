@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Book.AutoMapper;
 using Book.Data;
+using Book.LoggerProvider;
 using Book.Services;
 using Book.Services.Base;
 using Microsoft.AspNetCore.Builder;
@@ -17,6 +18,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Filters;
+
 
 namespace Book.Api
 {
@@ -56,6 +58,7 @@ namespace Book.Api
             services.AddScoped<IAuthorService, AuthorService>();
             services.AddScoped<IBookService, BookService>();
             services.AddScoped<IPublisherService, PublisherService>();
+            services.AddScoped<LoggerProvider.ILogger, Logger>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
