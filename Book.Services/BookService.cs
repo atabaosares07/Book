@@ -43,7 +43,7 @@ namespace Book.Services
 
         public async Task<IEnumerable<BookQueryDto>> GetAll()
         {
-            return Mapper.Map<IEnumerable<BookQueryDto>>(await context.Books.ToListAsync());
+            return Mapper.Map<IEnumerable<BookQueryDto>>(await context.Books.Include(b => b.BookAuthors).ToListAsync());
         }
 
         public async Task<BookQueryDto> GetById(int id)

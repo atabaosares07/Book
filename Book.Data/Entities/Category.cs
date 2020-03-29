@@ -11,7 +11,7 @@ namespace Book.Data.Entities
 		public int CategoryId { get; set; }
 		[Required]
 		public string CategoryName { get; set; }
-		public virtual ICollection<Book> Books { get; set; }
+		public ICollection<Book> Books { get; set; }
 		public Category()
 		{
 			Books = new HashSet<Book>();

@@ -17,7 +17,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Book.Data\Book.Data.csproj" />
-    <ProjectReference Include="..\Book.Logger\Book.Logger.csproj" />
     <ProjectReference Include="..\Book.Services\Book.Services.csproj" />
   </ItemGroup>
 

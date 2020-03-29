@@ -11,7 +11,7 @@ namespace Book.Data.Entities
         public int PublisherId { get; set; }
         [Required]
         public string PublisherName { get; set; }
-        public virtual ICollection<Book> Books { get; set; }
+        public ICollection<Book> Books { get; set; }
 
         public Publisher()
         {

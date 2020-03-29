@@ -32,7 +32,8 @@ namespace Book.Services
 
 		public async Task Delete(int id)
 		{
-			var entity = await context.Authors.SingleOrDefaultAsync(o => o.AuthorId == id);
+			var entity = await context.Authors.Include(a => a.BookAuthors).SingleOrDefaultAsync(o => o.AuthorId == id);
+
 			if (entity == null)
 			{
 				throw new NotFoundException();
@@ -44,7 +45,7 @@ namespace Book.Services
 
 		public async Task<IEnumerable<AuthorQueryDto>> GetAll()
 		{
-			return Mapper.Map<IEnumerable<AuthorQueryDto>>(await context.Authors.ToListAsync());
+			return Mapper.Map<IEnumerable<AuthorQueryDto>>(await context.Authors.Include(a => a.BookAuthors).ToListAsync());
 		}
 
 		public async Task<AuthorQueryDto> GetById(int id)

@@ -13,7 +13,7 @@ namespace Book.Data.Entities
 		public string FirstName { get; set; }
 		[Required]
 		public string LastName { get; set; }
-		public virtual ICollection<BookAuthor> BookAuthors { get; set; }
+		public ICollection<BookAuthor> BookAuthors { get; set; }
 
 		public Author()
 		{

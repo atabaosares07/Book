@@ -44,7 +44,7 @@ namespace Book.Services
 
 		public async Task<IEnumerable<CategoryQueryDto>> GetAll()
 		{
-			return Mapper.Map<IEnumerable<CategoryQueryDto>>(await context.Categories.ToListAsync());
+			return Mapper.Map<IEnumerable<CategoryQueryDto>>(await context.Categories.Include(c => c.Books).ToListAsync());
 		}
 
 		public async Task<CategoryQueryDto> GetById(int id)

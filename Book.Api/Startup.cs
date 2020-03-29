@@ -41,7 +41,6 @@ namespace Book.Api
             services.Configure<AppSettings>(appSettingsSection);
 
             services.AddDbContextPool<DataContext>(options => options
-                .UseLazyLoadingProxies()
                 .UseSqlServer(appSettings.ConnectionString));
 
             services.AddControllers();
