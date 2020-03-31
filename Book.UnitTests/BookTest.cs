@@ -1,4 +1,5 @@
-﻿using Book.Data;
+﻿using Book.AutoMapper;
+using Book.Data;
 using Book.Dto;
 using Book.LoggerProvider;
 using Book.Services;
@@ -24,6 +25,8 @@ namespace Book.UnitTests
                 .Options;
 
             dataContext = new DataContext(options);
+
+            AutoMapperConfiguration.Configure();
         }
 
         [TestCleanup]
@@ -66,6 +69,27 @@ namespace Book.UnitTests
 
             var service = new BookService(dataContext, mock.Object);
             await service.Delete(777);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(RecordAlreadyExistException))]
+        public async Task Create_RecordAlreadyExist()
+        {
+            var param = DateTime.Now.ToString();
+            var mock = new Mock<ILogger>();
+            mock.Setup(o => o.Log(param)).Returns(new BookDto { BookName = "The Little Prince" }.BookName);
+
+            dataContext.Books.Add(new Data.Entities.Book { BookId = 1, BookName = "The Little Prince" });
+            dataContext.SaveChanges();
+
+            var bookDto = new BookDto
+            {
+                BookName = "The Little Prince"
+            };
+
+            var service = new BookService(dataContext, mock.Object);
+
+            await service.Create(bookDto);
         }
     }
 }

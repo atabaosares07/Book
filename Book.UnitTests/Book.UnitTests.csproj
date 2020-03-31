@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Book.AutoMapper\Book.AutoMapper.csproj" />
     <ProjectReference Include="..\Book.Data\Book.Data.csproj" />
     <ProjectReference Include="..\Book.Services\Book.Services.csproj" />
   </ItemGroup>
