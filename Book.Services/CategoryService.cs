@@ -24,7 +24,11 @@ namespace Book.Services
 
 		public async Task<object> Create(CategoryDto dto)
 		{
+			if (await context.Categories.AnyAsync(c => c.CategoryName == dto.CategoryName))
+				throw new RecordAlreadyExistException();
+
 			var entity = Mapper.Map<Category>(dto);
+
 			context.Add(entity);
 			await context.SaveChangesAsync();
 			return entity.CategoryId;

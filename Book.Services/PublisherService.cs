@@ -24,6 +24,9 @@ namespace Book.Services
 
         public async Task<object> Create(PublisherDto dto)
         {
+            if (await context.Publishers.AnyAsync(p => p.PublisherName == dto.PublisherName))
+                throw new RecordAlreadyExistException();
+
             var entity = Mapper.Map<Publisher>(dto);
             context.Add(entity);
             await context.SaveChangesAsync();
