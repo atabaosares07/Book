@@ -1,12 +1,14 @@
 ﻿using Book.Dto;
 using Book.Services.Base;
 using Book.Services.Rules.Base;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Book.Api.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class CategoryController : ControllerBase
@@ -17,7 +19,7 @@ namespace Book.Api.Controllers
         {
             this.categoryService = categoryService;
         }
-
+        
         [HttpGet]
         public async Task<ActionResult<List<CategoryQueryDto>>> Get()
         {

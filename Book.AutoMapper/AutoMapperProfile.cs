@@ -3,6 +3,7 @@ using Book.Data.Entities;
 using Book.Dto;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Book.AutoMapper
@@ -17,6 +18,10 @@ namespace Book.AutoMapper
             CreateMap<Book.Data.Entities.Book, BookDto>();
             CreateMap<BookAuthor, BookAuthorDto>();
             CreateMap<Publisher, PublisherDto>();
+            CreateMap<Role, RoleDto>();
+            CreateMap<User, UserDto>()
+                .ForMember(dest => dest.Id, src => src.MapFrom(o => o.UserId))
+                .ForMember(dest => dest.Roles, src => src.MapFrom(o => o.UserInRoles.Select(s => s.Role)));
 
             // entity -> query dto
             CreateMap<Category, CategoryQueryDto>();
@@ -33,7 +38,10 @@ namespace Book.AutoMapper
             CreateMap<BookDto, Book.Data.Entities.Book>();
             CreateMap<BookAuthorDto, BookAuthor>();
             CreateMap<PublisherDto, Publisher>();
-
+            CreateMap<RoleDto, Role>();
+            CreateMap<UserDto, User>()
+                .ForMember(dest => dest.UserId, src => src.MapFrom(o => o.Id));
+            CreateMap<RegisterDto, User>();
         }
     }
 }

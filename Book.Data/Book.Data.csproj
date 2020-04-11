@@ -17,4 +17,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Book.Helpers\Book.Helpers.csproj" />
+  </ItemGroup>
+
 </Project>

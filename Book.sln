@@ -27,6 +27,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Book.UnitTests", "Book.Unit
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Book.LoggerProvider", "Book.Logger\Book.LoggerProvider.csproj", "{40E67284-F900-4AD8-9B25-88F75BF180DF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Book.Helpers", "Book.Helpers\Book.Helpers.csproj", "{0D5F1C90-E988-4407-9696-40010151BCA7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +63,10 @@ Global
 		{40E67284-F900-4AD8-9B25-88F75BF180DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{40E67284-F900-4AD8-9B25-88F75BF180DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{40E67284-F900-4AD8-9B25-88F75BF180DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D5F1C90-E988-4407-9696-40010151BCA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D5F1C90-E988-4407-9696-40010151BCA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D5F1C90-E988-4407-9696-40010151BCA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D5F1C90-E988-4407-9696-40010151BCA7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -73,6 +79,7 @@ Global
 		{5584E90A-D6F7-4BC5-9379-FA13D37F5223} = {4B646A57-97C7-4889-A5A0-A434B96CA7C0}
 		{3704A78A-D42A-4196-8A1B-7141340A44B5} = {4B0F0A58-FDC5-4FEA-9A4E-B4BDAF742D02}
 		{40E67284-F900-4AD8-9B25-88F75BF180DF} = {4B646A57-97C7-4889-A5A0-A434B96CA7C0}
+		{0D5F1C90-E988-4407-9696-40010151BCA7} = {4B646A57-97C7-4889-A5A0-A434B96CA7C0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3D1969DE-8BA1-41A7-9988-7966ADB2FF94}

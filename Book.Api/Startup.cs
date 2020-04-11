@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Book.Api.Helpers;
 using Book.AutoMapper;
 using Book.Data;
 using Book.LoggerProvider;
@@ -18,7 +19,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Filters;
-
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace Book.Api
 {
@@ -45,6 +46,10 @@ namespace Book.Api
 
             services.AddControllers();
 
+            services.AddCors();
+
+            services.AddJwtAuthentication(appSettings.Secret);
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Book", Version = "v1" });
@@ -53,11 +58,14 @@ namespace Book.Api
                 c.OperationFilter<SecurityRequirementsOperationFilter>(false);
             });
 
+            services.AddTransient<DataContext>();
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<IAuthorService, AuthorService>();
             services.AddScoped<IBookService, BookService>();
             services.AddScoped<IPublisherService, PublisherService>();
             services.AddScoped<LoggerProvider.ILogger, Logger>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IRoleService, RoleService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -69,6 +77,11 @@ namespace Book.Api
             }
 
             app.UseHttpsRedirection();
+
+            app.UseCors(x => x
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
 
             app.UseSwaggerUI(o =>
             {
@@ -85,6 +98,8 @@ namespace Book.Api
             app.UseSwagger();
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 

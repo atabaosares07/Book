@@ -17,7 +17,7 @@ namespace Book.Data.Entities
 		[Required]
 		public string Isbn { get; set; }
 		public int CategoryId { get; set; }
-		public virtual Category Category { get; set; }
+		public Category Category { get; set; }
 		public int PublisherId { get; set; }
 		public Publisher Publisher { get; set; }
 		public ICollection<BookAuthor> BookAuthors { get; set; }
